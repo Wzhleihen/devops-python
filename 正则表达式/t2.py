@@ -3,7 +3,6 @@ import re
 # # 建议模式先编译，然后使用
 # regex = re.compile('\d') # py使用re模块，模式一般都有进行先编译，要不然每次使用都会重新编译，效率较低
 
-
 s = """bottle\nbag\nbig\napple"""
 for i, c in enumerate(s, 1):
     print((i-1, c), end='\n' if i % 7 ==0 else '\t')
@@ -14,9 +13,65 @@ print()
 # \t和\n是转义字符，分别表示制表符和换行符
 #  方便查看对应位置的字符
 
-m = re.match('^a', s)
+# 单次匹配
+# match() 函数， 默认必须从0处开始匹配上，或指定位置开始匹配
+# search()函数，在字符串中搜索匹配的模式，返回第一个匹配的对象 ，从0或者指定位置开始匹配
+# fullmatch()函数，要求全长匹配，一个不落(如果指定字符串范围，字符串也要匹配)
+
+# # search
+# # m = re.match('^a', s)
+# # m = re.search('^a', s, re.M)  # re.M表示多行匹配
+# m = re.search('^b', s)  # search()函数为全局匹配，从头开始匹配
+# print(type(m), m)
+
+# regex = re.compile('^b', re.M)
+# m = regex.search(s, 1)  # 从第1个位置开始匹配,即返回第二个b
+# print(m)
+
+
+# # fullmatch
+# m = re.fullmatch('b.*', s, re.M | re.S)
+# print(m)
+
+# regex = re.compile('^bag', re.M)
+# m = regex.fullmatch(s, 7, 10)  # # 要完全匹配，多了少了都不行, [7, 10)
+# print(m)
+
+
+# 全文匹配
+# findall()函数，在文本中，全文搜索多次，返回数据类型为list，元素为匹配的子串
+# finditer()函数，返回所有匹配的子串的迭代器，元素为匹配的对象
+
+# # findall
+# m = re.findall('b\w+', s)
+# print(type(m), m)
+
+# for x in m:
+#     print(type(x), x)
+# print('=' *  30)
+
+# regex = re.compile('b\w+', re.M)
+# for x in regex.finditer(s):
+#     print(type(x), x)
+
+
+# finditer
+m = re.finditer('b\w+', s)
 print(type(m), m)
 
-regex = re.compile('^a', re.M)
-m = regex.match(s)
-print(type(m), m)
+for x in m:
+    # print(type(x), x, x[0]) # py 3.6+ 支持
+    print(type(x), x, x[0], s[x.start():x.end()])
+
+
+# x.start() 返回匹配的起始位置
+# x.end() 返回匹配的结束位置
+# x.span() 返回匹配的起始和结束位置
+
+'''
+<class 'callable_iterator'> <callable_iterator object at 0x000001BB12DD4730>
+<class 're.Match'> <re.Match object; span=(0, 6), match='bottle'> bottle bottle
+<class 're.Match'> <re.Match object; span=(7, 10), match='bag'> bag bag
+<class 're.Match'> <re.Match object; span=(11, 14), match='big'> big big
+'''
+
