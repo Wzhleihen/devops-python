@@ -3,7 +3,7 @@ import re
 # # 建议模式先编译，然后使用
 # regex = re.compile('\d') # py使用re模块，模式一般都有进行先编译，要不然每次使用都会重新编译，效率较低
 
-s = """bottle\nbag\nbig\napple"""
+s = """bottle\nbag\nbig\napple\nable"""
 for i, c in enumerate(s, 1):
     print((i-1, c), end='\n' if i % 7 ==0 else '\t')
 print()
@@ -40,6 +40,7 @@ print()
 
 # 全文匹配
 # findall()函数，在文本中，全文搜索多次，返回数据类型为list，元素为匹配的子串
+# 如果有分组，1组返回的是分组的子串，多组返回字符串元组，元组中元素一定是组匹配的内容
 # finditer()函数，返回所有匹配的子串的迭代器，元素为匹配的对象
 
 # # findall
@@ -55,23 +56,66 @@ print()
 #     print(type(x), x)
 
 
-# finditer
-m = re.finditer('b\w+', s)
-print(type(m), m)
+# # 分组findall
+# x = re.findall(r'b(\w+)', s)
+# for i in x:
+#     print(type(i), i)
 
-for x in m:
-    # print(type(x), x, x[0]) # py 3.6+ 支持
-    print(type(x), x, x[0], s[x.start():x.end()])
+# # finditer
+# m = re.finditer('b\w+', s)
+# print(type(m), m)
 
+# for x in m:
+#     # print(type(x), x, x[0]) # py 3.6+ 支持
+#     print(type(x), x, x[0], s[x.start():x.end()])
 
 # x.start() 返回匹配的起始位置
 # x.end() 返回匹配的结束位置
 # x.span() 返回匹配的起始和结束位置
+
+# 分组finditer
+# x = re.finditer('(b\w+)\s(b\w+)\s(b\w+)', s)
+# for i in x:
+#     print(type(i), i, i.groups())
+
+x = re.match('(b\w+)\s(?P<name2>\w+)\s(?P<name3>\w+)', s)
+print(x.groups())
+print(x.groupdict())
+print(x[1],x.group(2))
+
+# 正则匹配语法： \w 匹配字母、数字、下划线 ，\s 匹配空白字符
+# 返回的是对象，不是字符串
+
 
 '''
 <class 'callable_iterator'> <callable_iterator object at 0x000001BB12DD4730>
 <class 're.Match'> <re.Match object; span=(0, 6), match='bottle'> bottle bottle
 <class 're.Match'> <re.Match object; span=(7, 10), match='bag'> bag bag
 <class 're.Match'> <re.Match object; span=(11, 14), match='big'> big big
+'''
+
+## 匹配替换
+# sub()函数，在文本中，全文搜索多次，返回替换后的对象是字符串
+# subn()函数，在文本中，全文搜索多次，返回替换后的字符串和替换的次数， 用得比较少
+
+
+# m = re.sub('b\w+', 'WWW', s, 10)
+# print(type(m), m)
+
+# x = re.subn('b\w', 'MMM', s,10)
+# print(type(x), x)
+
+
+# # 分组
+# # () 表示分组
+
+# m = re.search(r'(b)(\w+)', s)
+# print(m, m[0],  m.group(0))
+# print(m.group(1), m.groups())
+
+'''
+(\w) 被重复了 5 次
+最后一次是 e
+所以 group(1) = 'e'
 '''
 
