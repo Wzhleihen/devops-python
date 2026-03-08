@@ -1,0 +1,21 @@
+### 练习 2：wc 命令
+
+实现简化版 `wc`
+
+python wc.py file.txt
+
+输出：
+
+lines: 10
+words: 50
+chars: 300
+
+参数：
+
+-l   只统计行
+-w   只统计单词
+-c   只统计字符
+
+示例：
+
+python wc.py file.txt -l
