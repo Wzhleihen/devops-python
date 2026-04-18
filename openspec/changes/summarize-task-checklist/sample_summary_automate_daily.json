@@ -1,0 +1,192 @@
+{
+  "status": {
+    "total": 15,
+    "complete": 0,
+    "pending": 15,
+    "completion_rate": 0.0
+  },
+  "stage_stats": {
+    "变更检索与标准化": {
+      "total": 3,
+      "complete": 0,
+      "pending": 3,
+      "completion_rate": 0.0,
+      "tasks": [
+        {
+          "ref": "1.1",
+          "title": "定义增量处理游标格式（最后处理提交、日期范围、重跑标记）",
+          "done": false,
+          "deps": [],
+          "line": 3
+        },
+        {
+          "ref": "1.2",
+          "title": "实现 Git/gh 变更抓取并导出结构化 change events",
+          "done": false,
+          "deps": [],
+          "line": 4
+        },
+        {
+          "ref": "1.3",
+          "title": "实现章节归类与路径归一化规则（含置信度字段）",
+          "done": false,
+          "deps": [],
+          "line": 5
+        }
+      ]
+    },
+    "Day生成": {
+      "total": 4,
+      "complete": 0,
+      "pending": 4,
+      "completion_rate": 0.0,
+      "tasks": [
+        {
+          "ref": "2.1",
+          "title": "实现 day 编号增量分配规则（衔接既有 day 文件）",
+          "done": false,
+          "deps": [],
+          "line": 9
+        },
+        {
+          "ref": "2.2",
+          "title": "基于模板生成/更新 `daily/dayxx.md`（含章节与回链）",
+          "done": false,
+          "deps": [],
+          "line": 10
+        },
+        {
+          "ref": "2.3",
+          "title": "为低信息量变更实现占位与轻量日标注策略",
+          "done": false,
+          "deps": [],
+          "line": 11
+        },
+        {
+          "ref": "5.1",
+          "title": "校验 day 编号连续、路径有效、模板必填字段完整",
+          "done": false,
+          "deps": [],
+          "line": 27
+        }
+      ]
+    },
+    "练习生成": {
+      "total": 4,
+      "complete": 0,
+      "pending": 4,
+      "completion_rate": 0.0,
+      "tasks": [
+        {
+          "ref": "3.1",
+          "title": "定义练习输出结构（题目、难度、验收标准、参考路径）",
+          "done": false,
+          "deps": [],
+          "line": 15
+        },
+        {
+          "ref": "3.2",
+          "title": "实现按变更语义生成至少 1 题练习的逻辑",
+          "done": false,
+          "deps": [],
+          "line": 16
+        },
+        {
+          "ref": "3.3",
+          "title": "实现三级难度（基础/进阶/迁移）与分层输出",
+          "done": false,
+          "deps": [],
+          "line": 17
+        },
+        {
+          "ref": "5.2",
+          "title": "校验练习验收标准完整性与可执行性",
+          "done": false,
+          "deps": [],
+          "line": 28
+        }
+      ]
+    },
+    "能力评估": {
+      "total": 3,
+      "complete": 0,
+      "pending": 3,
+      "completion_rate": 0.0,
+      "tasks": [
+        {
+          "ref": "4.1",
+          "title": "定义能力维度与可解释评分规则（含证据引用）",
+          "done": false,
+          "deps": [],
+          "line": 21
+        },
+        {
+          "ref": "4.2",
+          "title": "实现单次评估输出与趋势快照持久化",
+          "done": false,
+          "deps": [],
+          "line": 22
+        },
+        {
+          "ref": "4.3",
+          "title": "生成面向下一学习周期的针对性建议",
+          "done": false,
+          "deps": [],
+          "line": 23
+        }
+      ]
+    },
+    "质量校验与集成": {
+      "total": 1,
+      "complete": 0,
+      "pending": 1,
+      "completion_rate": 0.0,
+      "tasks": [
+        {
+          "ref": "5.3",
+          "title": "增加一键运行入口（先 dry-run 再写入）并输出最终报告",
+          "done": false,
+          "deps": [],
+          "line": 29
+        }
+      ]
+    }
+  },
+  "recommendations": [
+    {
+      "task": "1.1",
+      "title": "定义增量处理游标格式（最后处理提交、日期范围、重跑标记）",
+      "reason": "无显式依赖，按顺序可执行"
+    },
+    {
+      "task": "1.2",
+      "title": "实现 Git/gh 变更抓取并导出结构化 change events",
+      "reason": "无显式依赖，按顺序可执行"
+    },
+    {
+      "task": "1.3",
+      "title": "实现章节归类与路径归一化规则（含置信度字段）",
+      "reason": "无显式依赖，按顺序可执行"
+    },
+    {
+      "task": "2.1",
+      "title": "实现 day 编号增量分配规则（衔接既有 day 文件）",
+      "reason": "无显式依赖，按顺序可执行"
+    },
+    {
+      "task": "2.2",
+      "title": "基于模板生成/更新 `daily/dayxx.md`（含章节与回链）",
+      "reason": "无显式依赖，按顺序可执行"
+    }
+  ],
+  "validation": {
+    "blocking_issues": [],
+    "warnings": [],
+    "details": {
+      "malformed_status_lines": [],
+      "unresolved_dependencies": [],
+      "numbering_issues": [],
+      "unparsed_task_lines": []
+    }
+  }
+}
