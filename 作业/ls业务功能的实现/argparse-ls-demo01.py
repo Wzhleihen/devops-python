@@ -166,7 +166,7 @@ def listdir(path, all=False, detail=False, reverse=False, human=False):
 print(*(listdir(args.path, args.all, args.detail, args.reverse, args.human)), sep="\n")
 
 
-# 33206 1 0 0 5.9K 2026-04-23 14:04:39 argparse-ls-demo01.py
+# 33206 1 0 0 5.9K 2026-04-23 14:04:39 argparse-ls-instantiation_demo01.py
 # 参考：改变33206 为drwxr-xr-x
 
 """ 
