@@ -72,16 +72,16 @@ __spec__ : 模块规范
 # print(dir())  # 输出当前文件的所有属性和方法
 
 # 例子
-import os  # 导入模块，os为标识符
+# import os  # 导入模块，os为标识符
 
-# 模块也有自己的全局变量，从os.__dict__中可以查看
-print(os.path.exists)  
-print(*os.path.__dict__.keys(), sep=', ')  
-print(dir(os.path))  # 输出和上面一样
-print(os.path.__dict__['exists']) # 模块的全局变量都放在，该模块的__dict__中，__dict__是一个字典，存放模块的全局变量和方法
-print(getattr(os.path, 'exists'))  # 输出模块的内存地址
-# <built-in function _path_exists>
-# <built-in function _path_exists>
+# # 模块也有自己的全局变量，从os.__dict__中可以查看
+# print(os.path.exists)  
+# print(*os.path.__dict__.keys(), sep=', ')  
+# print(dir(os.path))  # 输出和上面一样
+# print(os.path.__dict__['exists']) # 模块的全局变量都放在，该模块的__dict__中，__dict__是一个字典，存放模块的全局变量和方法
+# print(getattr(os.path, 'exists'))  # 输出模块的内存地址
+# # <built-in function _path_exists>
+# # <built-in function _path_exists>
 
 
 
